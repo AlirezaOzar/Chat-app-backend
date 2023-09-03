@@ -5,6 +5,7 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const userRoutes = require("../backend/routes/userRoute.js");
+const authUser = require('../backend/routes/authRoute.js');
 
 dotenv.config();
 const PORT = 5000
@@ -15,7 +16,7 @@ app.use(helmet());
 app.use(morgan('common'))
 
 app.use('/api/users', userRoutes);
-
+app.use('/api/auth', authUser);
 
 const connectDB = async () => {
     try {
